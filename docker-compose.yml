@@ -1,0 +1,33 @@
+version: '3'
+services:
+
+##############################################################################
+# start containers
+
+  samba:
+    container_name: 'samba'
+    build:
+      context: ./
+    ports:
+      - "127.0.0.1:139:139"
+      - "127.0.0.1:445:445"
+    restart: unless-stopped
+    networks:
+      samba-network:
+    environment:
+      SAMBA_USERS_FILE: "/samba-users.csv"
+    # Here's how to override built-in users:
+    # volumes:
+    #   - ${PWD}/samba-users.csv:/samba-users.csv
+
+# end containers
+##############################################################################
+
+##############################################################################
+# start volumes and networks
+
+networks:
+  samba-network:
+
+# end of volumes and networks
+##############################################################################
