@@ -40,3 +40,17 @@ username2,password2,optional_flag_contents
 ```
 
 ```
+
+
+# Testing
+
+* Browse as guest
+
+```
+smbutil view -g //localhost
+```
+
+* View available shares as user **alice**
+```
+smbutil view //alice@localhost
+```
