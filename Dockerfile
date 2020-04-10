@@ -1,7 +1,7 @@
 FROM alpine:3.10
 RUN apk --no-cache --update add samba-common-tools samba-client samba-server shadow && \
     sed -i '/^CREATE_MAIL_SPOOL/s/yes/no/' /etc/default/useradd && \
-    mkdir -p /public/guest /shares/public /public/other && \
+    mkdir -p /shares/guest /shares/public && \
     rm -rf /var/cache/apk/*
 
 # default settings, can be overwritten via docker-compose
